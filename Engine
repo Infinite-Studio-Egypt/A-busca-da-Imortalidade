@@ -1,0 +1,279 @@
+_criadores__= "Benicio Warwick Khan - Programador, Daniel M. Hirata - Propaganda e Marketing, Enzo Bressan - Criador dos Gráficos"
+nome_do_jogo = "A busca da Imortalidade"
+import shelve
+import sys
+import time
+stats = dict()
+points = dict()
+points['Stats'] = 30
+equipment = dict()
+equipment['Helmet'] = ''
+equipment['Necklace'] = ''
+equipment['Anklet'] = ''
+equipment['Armor'] = ''
+equipment['Cloak'] = ''
+equipment['Gauntlets'] = ''
+equipment['Bracelet'] = ''
+equipment['Main Ring'] = ''
+equipment['Side Ring'] = ''
+equipment['Main Weapon'] = ''
+equipment['Leg Guards'] = ''
+equipment['Shoes'] = ''
+equipment['Wings'] = ''
+equipment['Trinket'] = ''
+equipment['Wand'] = ''
+n_values = dict()
+n_values['HP'] = 100
+n_values['MP'] = 25
+n_values['Name'] = ''
+n_values['Race'] = ''
+save_game = 'save_game'
+game_state= n_values, stats, points
+save_game = game_state
+
+def update():
+  global game_state
+
+def print_slow(str):
+  for letter in str:
+     sys.stdout.write(letter)
+     time.sleep(.1)
+     
+def print_fast(str):
+  for letter in str:
+     sys.stdout.write(letter)
+     time.sleep(.01)
+     
+def censor(text, word):
+    return text.replace(word, "*" * len(word)) 
+   
+#Add stat functions
+class add():
+  
+  
+  def add_sta(self, arg1):
+    stats['STA'] += arg1
+    points['Stats'] -= arg1
+    print ('\nVocê adicionou', arg1, 'pontos de stats para STA!\n')
+    print (game_state,'\n')
+    update()
+  
+  def add_int(self, arg1):
+    stats['INT'] += arg1
+    points['Stats'] -= arg1
+    print ('\nVocê adicionou', arg1, 'pontos de stats para INT!\n')
+    print (game_state,'\n')
+    update()
+   
+  def add_str(self, arg1):
+    stats['STR'] += arg1
+    points['Stats'] -= arg1
+    print ('\nVocê adicionou', arg1, 'pontos de stats para STR!\n')
+    print (game_state,'\n')
+    update()
+    
+  def add_agl(self ,arg1):
+    stats['AGL'] += arg1
+    points['Stats'] -= arg1
+    print ('\nVocê adicionou', arg1, 'pontos de stats para AGL!\n')
+    print (game_state,'\n')
+    update()
+  
+class menu_inicial():
+  def __init__():
+    Load_var = False
+  
+  def save(self):
+    shelfFile = shelve.open('save_game')
+    shelfFile['game_vars'] = game_state
+    shelfFile.close()
+    print_slow('\nYou have saved your game!\n')
+    print (save_game)
+    Load_var = True
+    update()
+    
+  def load(self):
+    if Load_var == True:
+      shelfFile = shelve.open('save_game')
+      shelfFile['game_vars'] = game_state
+      shelfFile.close()
+      print_slow('\nGame Loaded!\n')
+      print (save_game)
+      update()
+    else:
+      print('No Save File found.')
+      
+  def start():
+    Load_var = False
+    print('\nWelcome to the Start Menu!\n')
+    print('\nStarting Game.\n')
+    Player.__init__()
+
+            
+  def ajuda(self):
+    print('n\Welcome to the Help Menu\n')
+    pass
+   
+  def opções(self):
+    print('\nWelcome to the Options Menu!\n')
+    pass
+   
+  def créditos(self):
+    print('\nWelcome to the Credits Menu\n')
+    pass
+
+
+class Person():
+   
+  def __init__(self, n_values, stats, equips, exp):
+      self.n_values = n_values
+      self.stats = stats
+      self.equips = equipment
+      self.exp = experience
+      self.hp = (n_values['HP'] == 100)
+      self.mp = (n_values['MP'] == 25)
+    
+class Player(Person):
+    def __init__():
+      n_values['Name'] = input("Please inform your character's name. ")
+      print ("\nGreetings, " + n_values['Name'] + ".")
+      n_values['Race'] = input("\n" + n_values['Name'] + ", Please choose a Race.\n")
+      if 'Human' in n_values['Race']:
+        Human.__init__()
+      if 'Elf' in n_values['Race']:
+        Elf.__init__()
+      if 'Dwarf' in n_values['Race']:
+        Dwarf.__init__()
+      if 'Orc' in n_values['Race']:
+        Orc.__init__()
+class Human():
+  def __init__():
+    (n_values['HP'] == 100)
+    (n_values['MP'] == 25)
+    stats['ATK'] = 6
+    stats['INT'] = 10
+    stats['DEF'] = 5
+    stats['WIS'] = 6
+    stats['AGL'] = 7
+    print(game_state)
+    print('\n')
+  
+class Elf():
+  def __init__():
+    (n_values['HP'] == 130)
+    (n_values['MP'] == 50)
+    stats['ATK'] = 8
+    stats['INT'] = 7
+    stats['DEF'] = 5
+    stats['WIS'] = 6
+    stats['AGL'] = 10
+
+class Dwarf():
+  def __init__():
+    (n_values['HP'] == 150)
+    (n_values['MP'] == 30)
+    stats['ATK'] = 6
+    stats['INT'] = 5
+    stats['DEF'] = 10
+    stats['WIS'] = 5
+    stats['AGL'] = 7
+
+class Orc():
+  def __init__():
+    (n_values['HP'] == 200)
+    (n_values['MP'] == 10)
+    stats['ATK'] = 10
+    stats['INT'] = 3
+    stats['DEF'] = 8
+    stats['WIS'] = 4
+    stats['AGL'] = 7 
+  
+class Classes():  
+#Magic Classes
+  def Mage():
+    stats['INT'] += 3
+    stats['WIS'] += 1
+    stats['DEF'] -= 2
+    stats['AGL'] -= 1
+    stats['ATK'] -= 1
+    print_fast('You have gained the Mage class!\n')
+    print(game_state)
+    print('\n')
+     
+    def Sorcerer():
+        stats['WIS'] += 3
+        stats['INT'] += 1
+        stats['AGL'] -= 2
+        stats['DEF'] -= 1
+        stats['ATK'] -= 1
+     
+    def Sage():
+        stats['INT'] += 5
+        stats['WIS'] += 5
+        stats['DEF'] -= 3
+        stats['AGL'] -= 3
+        stats['ATK'] -= 4
+        pass
+     
+    #Comabat Classes
+    def Tank():
+        stats['ATK'] += 2
+        stats['DEF'] += 3
+        stats['INT'] -= 3
+        stats['WIS'] -= 2
+     
+    def DPS():
+        stats['ATK'] += 3
+        stats['DEF'] += 2
+        stats['INT'] -= 2
+        stats['WIS'] -= 3
+        
+    def Thief():
+        stats['ATK'] += 5
+        stats['AGL'] += 5
+        stats['WIS'] += 3
+        stats['DEF'] -= 4
+
+    #Support Classes
+    def Healer():
+        stats['INT'] += 3
+        stats['WIS'] += 5
+        stats['ATK'] -= 3
+        stats['DEF'] -= 5
+        stats['AGL'] -= 3
+
+    def Summoner():
+        stats['INT'] += 4
+        stats['WIS'] += 3
+        stats['ATK'] -= 5
+        stats['DEF'] -= 2
+        stats['AGL'] -= 3
+        pass
+     
+    def Priest():
+        stats['INT'] += 3
+        stats['WIS'] += 2
+        stats['ATK'] -= 2
+        stats['DEF'] -= 3
+        stats['AGL'] += 3
+        pass
+     
+    #Side Classes
+    def Alchemist():
+         pass
+     
+    def Blacksmith():
+         pass
+     
+    def Battle_Chef():
+         pass
+
+class Actions():
+      def Walk():
+          pass
+      def Hit():
+          pass
+      def Run():
+          pass
+      def use():
+          pass
